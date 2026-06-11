@@ -1,0 +1,32 @@
+{
+    "devDependencies": {
+        "@babel/core": "^7.17.0",
+        "@babel/preset-env": "^7.16.0",
+        "@symfony/webpack-encore": "^6.0.0",
+        "@vue/compiler-sfc": "^3.5.38",
+        "core-js": "^3.38.0",
+        "path": "^0.12.7",
+        "regenerator-runtime": "^0.13.9",
+        "sass": "^1.100.0",
+        "sass-loader": "^16.0.8",
+        "vue": "^3.5.38",
+        "vue-loader": "^17.4.2",
+        "webpack": "^5.72",
+        "webpack-cli": "^6.0.0"
+    },
+    "license": "UNLICENSED",
+    "private": true,
+    "scripts": {
+        "dev-server": "encore dev-server",
+        "dev": "encore dev --watch",
+        "build": "encore production --progress"
+    },
+    "dependencies": {
+        "font-awesome": "^4.7.0",
+        "js-datepicker": "^5.18.4",
+        "swiper": "^12.2.0",
+        "vue-router": "^5.1.0",
+        "vuex": "^4.1.0",
+        "vuex-persistedstate": "^4.1.0"
+    }
+}

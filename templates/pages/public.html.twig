@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Добро пожаловать{% endblock %}
+
+{% block body %}
+    <div id="landing"></div>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('public') }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('public') }}
+{% endblock %}
