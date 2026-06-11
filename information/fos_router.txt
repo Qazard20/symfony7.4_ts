@@ -1,0 +1,19 @@
+//=================================  Setup JOS Routes ===================================
+1) Установка:
+composer require friendsofsymfony/jsrouting-bundle
+
+Появляется файл конфигурации config/routes/fos_js_routing.yaml, а также файл с путями
+public/bundles/fosjsrouting/js/router.min.js
+
+Добавляем в файл vue
+const routes = require('/public/js/fos_js_routes.json');
+import Routing from '/public/bundles/fosjsrouting/js/router.js';
+Routing.setRoutingData(routes);
+
+чтобы записать путь из контроллера выполняем команду:
+php bin/console fos:js-routing:dump --format=json --target=public/js/fos_js_routes.json
+
+НЕ ЗАБЫВАЕМ УКАЗЫВАТЬ В КОНТРОЛЛЕРЕ КАКИЕ ПУТИ РАСШАРИВАТЬ ДЛЯ БАНДЛА ДОБАВЛЯЕМ:
+options: ['expose'=>true]
+
+//=======================================================================================
