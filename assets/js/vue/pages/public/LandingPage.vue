@@ -12,7 +12,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted, reactive, watch, computed } from 'vue';
 
 import Routing from '/public/bundles/fosjsrouting/js/router.js';

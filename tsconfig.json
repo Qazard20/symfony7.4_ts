@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "sourceMap": true,
+        "paths": {
+            "@jsDist.*": ["./assets/js/*"]
+        }
+    },
+    "include": ["assets/**/*.ts", "assets/**/*.vue"],
+    "exclude": [
+        "node_modules"
+    ]
+}

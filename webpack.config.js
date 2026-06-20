@@ -1,4 +1,5 @@
 const Encore = require('@symfony/webpack-encore');
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 let path = require('path');
 
 // Manually configure the runtime environment if not already configured yet by the "encore" command.
@@ -6,6 +7,13 @@ let path = require('path');
 if (!Encore.isRuntimeEnvironmentConfigured()) {
     Encore.configureRuntimeEnvironment(process.env.NODE_ENV || 'dev');
 }
+
+const ROOT_PATH = path.resolve(__dirname, './');
+const ASSETS_PATH = ROOT_PATH + '/assets';
+
+const ALIASES = {
+    '@jsDist': ASSETS_PATH + '/js'
+};
 
 Encore
     // directory where compiled assets will be stored
@@ -22,7 +30,7 @@ Encore
      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
     .addEntry('app', './assets/app.js')
-    .addEntry('public', './assets/js/vue/entries/public/public.js')
+    .addEntry('public', './assets/js/vue/entries/public/public.ts')
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()
@@ -60,10 +68,11 @@ Encore
 
     // enables Sass/SCSS support
     .enableSassLoader()
-    .enableVueLoader()
-    .addAliases({
-        '@jsDist': path.resolve(__dirname, 'assets', 'js')
-    })
+    .addAliases(ALIASES)
+    .enableVueLoader(() => {}, { version: 3, runtimeCompilerBuild: false })
+    .enableTypeScriptLoader((tsConfig) => {
+        tsConfig.appendTsSuffixTo = [/\.vue$/];
+    });
 
     // uncomment if you use TypeScript
     //.enableTypeScriptLoader()
@@ -79,4 +88,13 @@ Encore
     //.autoProvidejQuery()
 ;
 
-module.exports = Encore.getWebpackConfig();
+const config = Encore.getWebpackConfig();
+
+config.resolve.plugins = [
+    new TsconfigPathsPlugin({
+        configFile: './tsconfig.json',
+        extensions: ['.ts', '.tsx', '.vue', '.js', '.jsx']
+    })
+];
+
+module.exports = config;
