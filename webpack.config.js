@@ -10,9 +10,11 @@ if (!Encore.isRuntimeEnvironmentConfigured()) {
 
 const ROOT_PATH = path.resolve(__dirname, './');
 const ASSETS_PATH = ROOT_PATH + '/assets';
+const PUBLIC_PATH = ROOT_PATH + '/public';
 
 const ALIASES = {
-    '@jsDist': ASSETS_PATH + '/js'
+    '@jsDist': ASSETS_PATH + '/js',
+    '@public': PUBLIC_PATH
 };
 
 Encore

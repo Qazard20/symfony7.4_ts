@@ -15,15 +15,15 @@
 <script setup lang="ts">
 import { ref, onMounted, reactive, watch, computed } from 'vue';
 
-import Routing from '/public/bundles/fosjsrouting/js/router.js';
-const routes = require('/public/js/fos_js_routes.json');
+const Routing = require('/public/bundles/fosjsrouting/js/router.js');
+const routes = require('@public/js/fos_js_routes.json');
 Routing.setRoutingData(routes);
-const routing = ref(Routing)
+const routing = ref(Routing);
 
 //modules
 
-import Header from "@jsDist/vue/components/common/modules/Header";
-import Footer from "@jsDist/vue/components/common/modules/Footer";
+import Header from "@jsDist/vue/components/common/modules/Header.vue";
+import Footer from "@jsDist/vue/components/common/modules/Footer.vue";
 
 import Global from "@jsDist/services/globals";
 
@@ -44,9 +44,6 @@ const
     // Get route name
     routeName = computed(()=>{
       return store.getters.routeName
-    }),
-    breadcrumbsArray = computed(()=>{
-      return store.getters.getBreadcrumbsArray;
     })
 
 

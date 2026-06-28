@@ -1,9 +1,11 @@
 {
     "compilerOptions": {
+        "baseUrl": ".",
         "module": "commonjs",
         "sourceMap": true,
         "paths": {
-            "@jsDist.*": ["./assets/js/*"]
+            "@jsDist/*": ["assets/js/*"],
+            "@public/*": ["public/*"]
         }
     },
     "include": ["assets/**/*.ts", "assets/**/*.vue"],
